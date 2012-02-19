@@ -12,6 +12,17 @@ div.current(id='home')
       li.arrow
         a(href='#directions') Directions
 
+//- Take Me Home
+//- check http://mobilewebosp.pbworks.com/w/page/27924428/Google%20Maps%20and%20jQTouch
+div(id='takeMeHome')
+  div.toolbar
+    h1 Map
+    a.back(href='#') Back
+  div.notransform(id='map-overflow', style='overflow: hidden; padding: 0; border: 0;')
+    div.notransform(id='map_canvas', style='margin-left: -20px; margin-top: -20px;')
+
+
+
 //- Search form
 div(id='search')
   div.toolbar
@@ -21,3 +32,26 @@ div(id='search')
     ul(class='edit rounded')
       li
         input(type='search', name='search', placeholder='Search', id='searchField')
+
+script
+  function initialize() {
+         var myOptions = {
+             zoom: 8,
+             center: new google.maps.LatLng(-34.397, 150.644),
+             mapTypeId: google.maps.MapTypeId.ROADMAP
+         }
+         var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+  }
+  
+  $(document).ready(function() {
+     $('#takeMeHome').bind( 'pageAnimationEnd', function( e, i ) {
+        console.log(e, i);
+        if( i.direction != 'in' ) {
+          return;
+        }
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyDH-dhEXaxZujI5kmQxd4uVMXCuvlHypKM&sensor=true&callback=initialize";
+        document.body.appendChild(script); 
+     });
+  });
