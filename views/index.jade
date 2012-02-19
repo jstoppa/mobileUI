@@ -1,2 +1,23 @@
-h1= title
-p Welcome to #{title}
+//- Main form
+div.current(id='home')
+  div.toolbar
+    h1 Home
+    a.back(href='#') Back
+  div.scroll
+    ul(class='edit rounded')
+      li.arrow
+        a(href='#takeMeHome') Take me home
+      li.arrow
+        a(href='#search') Search
+      li.arrow
+        a(href='#directions') Directions
+
+//- Search form
+div(id='search')
+  div.toolbar
+    h1 Take Me Home
+    a.back(href='#') Back
+  form.scroll
+    ul(class='edit rounded')
+      li
+        input(type='search', name='search', placeholder='Search', id='searchField')
