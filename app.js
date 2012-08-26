@@ -1,6 +1,6 @@
 
 /**
- * Module dependencies.
+ * Module dependencies
  */
 
 var express = require('express')
@@ -8,7 +8,7 @@ var express = require('express')
 
 var app = module.exports = express.createServer();
 
-// Configuration
+// Configuration.......
 
 app.configure(function(){
   app.set('views', __dirname + '/views');
